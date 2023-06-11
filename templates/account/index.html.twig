@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ePicery - Mon compte{% endblock %}
+
+{% block body %}
+<section id="product-header">
+		<div class="product-heading">
+			<h1>Mon compte</h1>
+		</div>
+        <div class="commande-box">
+<h2>Mes informations personnelles</h2>
+
+<p><strong>Nom:</strong> <span class="quantity">{{app.user.name}}</span></p>
+<p><strong>Prénom:</strong> <span class="quantity">{{app.user.firstname}}</span></p>
+<p><strong>Numéro de téléphone:</strong> <span class="quantity">{{app.user.phone}}</span></p>
+<p><strong>Email: </strong> <span class="quantity">{{app.user.email}}</span></p>
+</div>
+<section class="commande-box">
+<h2>Mes adresses</h2>
+<div class="product-container">
+{% for adresse in app.user.Adress %}
+<div class="product-box">
+    <p>{{adresse.Address}}</p>
+    <p>{{adresse.Cp}}</p>
+    <p>{{adresse.City}}</p>
+    </div>
+{% endfor %}
+</div>
+<div class="section-btn-commande">
+<a href={{path('app_account_add_adress')}} class="cart-btn-commande">Ajouter une adresse</a>
+</div>
+</section>
+<section class="commande-box">
+<h2>Mes commandes</h2>
+<div class="product-container">
+{% for order in app.user.orders %}
+<div class="product-box">
+    <p>Commande n°
+						{{order.orderNumber}}</p>
+					<p>Effectuée le
+						{{order.dateTime|date('Y-m-d')}}</p>
+    </div>
+{% endfor %}
+</div>
+<div class="section-btn-commande">
+<a href={{path('app_account_orders')}} class="cart-btn-commande">Voir le détail</a>
+</div>
+</section>
+<a href={{path('app_logout')}} class="btn-deconnexion">Se déconnecter</a>
+</section>
+{% endblock %}

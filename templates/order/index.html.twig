@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ePicery - Résumé de la commande
+{% endblock %}
+
+{% block body %}
+	<section id="product-header">
+		<div class="product-heading">
+			<h1>Résumé de la commande</h1>
+		</div>
+		<div class="product-container">
+			{% for line in cart %}
+				<div class="product-box">
+					<img width="10px" src={{asset(line.product.media[0].path)}} alt={{line.product.media[0].alt}}>
+					<strong>{{ line.product.name }}</strong>
+					<span class="quantity">{{ line.product.description }}</span>
+					<span class="price">{{ line.product.priceHt }}
+						€</span>
+				</div>
+		
+		    {% endfor %}
+            </div>
+		<div class="btn-panier">
+			<strong style="font-size: 22px;">TOTAL : {{total}}
+				€</strong>
+			{{form(form)}}
+		</div>
+
+
+	</section>
+	{% endblock %}

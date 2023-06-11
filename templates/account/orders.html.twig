@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ePicery - Mes commandes
+{% endblock %}
+
+{% block body %}
+	<section id="product-header">
+		<div class="product-heading">
+			<h1>Mes commandes</h1>
+		</div>
+
+		{% for order in app.user.orders %}
+			<div class="commande-box">
+				<div class="commande-header">
+					<p>Commande n°
+						{{order.orderNumber}}</p>
+					<p>Effectuée le
+						{{order.dateTime|date('Y-m-d')}}</p>
+				</div>
+				<span class="commande-detail">Votre commande :</span>
+				<div class="product-container">
+					{% for line in order.Line %}
+						<div class="product-box">
+							<img width="50px" src={{asset(line.product.media[0].path)}} alt={{line.product.media[0].alt}}>
+							<strong>{{ line.product.name }}</strong>
+							<span class="quantity">{{ line.product.description }}</span>
+							<span class="price">{{ line.product.priceHt }}
+								€</span>
+							<p class="quantity-com">Quantité :
+								{{line.quantity}}</p>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>{% endblock %}

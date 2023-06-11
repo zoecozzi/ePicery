@@ -1,0 +1,318 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ePicery{% endblock %}
+
+{% block body %}
+<section id="search-banner">
+        
+        <img src="images/bg-1.png" class="bg-1" alt="bg">
+        <img src="images/bg-2.png" class="bg-2" alt="bg-2">
+   
+        <div class="search-banner-text">
+            <h1>Commandez vos courses quotidiennes</h1>
+            <strong>#Livraison gratuite</strong>
+          
+            <form action="" class="search-box">
+               
+                <i class="fas fa-search"></i>
+               
+                <input type="text" class="search-input" placeholder="Recherchez vos courses quotidiennes" name="search" required>
+                
+                <input type="submit" class="search-btn" value="Rechercher">
+            </form>
+        </div>
+    </section>
+
+    <section id="category">
+      
+         <div class="category-heading">
+            <h2>Catégories</h2>
+            <span><a href="#Fruit_Legume" style="color: grey;">Tous voir</a></span>
+        </div>
+    
+        <div class="category-container">
+
+            <a href="#Fruit_Legume" class="category-box">
+                <img src={{ asset("/images/Vegetables.png") }} alt="image de pomme">
+                <span>Fruits & Légumes</span>
+            </a>
+            <a href="#Produit_Laitiers" class="category-box">
+                <img src={{ asset("/images/Laitiers.png") }} alt="image de pomme">
+                <span>Produits Laitiers</span>
+            </a>
+            <a href="#Viandes" class="category-box">
+                <img src={{ asset("/images/viande.png") }} alt="image de pomme">
+                <span>Viandes</span>
+            </a>
+            <a href="#Volaille-oeuf" class="category-box">
+                <img src={{ asset("/images/oeuf.png") }} alt="image de pomme">
+                <span>Volailles & Oeufs</span>
+            </a>
+            <a href="#poissons" class="category-box">
+                <img src={{ asset("/images/fish.png") }} alt="image de pomme">
+                <span>Poissons</span>
+            </a>
+            <a href="#Pains" class="category-box">
+                <img src={{ asset("/images/Pain.png") }} alt="image de pomme">
+                <span>Pains</span>
+            </a>
+            <a href="#Boissons" class="category-box">
+                <img src={{ asset("/images/boissons.png") }} alt="image de pomme">
+                <span>Boissons</span>
+            </a> 
+        </div>
+        
+    </section>
+
+    <section id="Fruit_Legume">
+       
+        <div class="product-heading">
+            <h3>Fruits & Légumes</h3>
+        </div>
+
+       
+        <div class="product-container">
+           {% for fruit in fruits %}
+            <div class="product-box">
+                <img src={{asset(fruit.media[0].path)}} alt={{fruit.media[0].alt}}>
+                <strong>{{fruit.name}}</strong>
+                <span class="quantity">{{fruit.description}}</span>
+                <span class="price">{{fruit.priceHt}} €</span>
+               
+                <a href={{ path('app_cart_add', {'id' : fruit.id }) }} class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+       
+      
+
+    <section id="Produit_Laitiers">
+       
+        <div class="product-heading">
+            <h3>Produits Laitiers</h3>
+        </div>
+
+       
+        <div class="product-container">
+           {% for laitier in laitiers %}
+            <div class="product-box">
+                <img src={{asset(laitier.media[0].path)}} alt={{laitier.media[0].alt}}>
+                <strong>{{laitier.name}}</strong>
+                <span class="quantity">{{laitier.description}}</span>
+                <span class="price">{{laitier.priceHt}} €</span>
+               
+                <a href={{ path('app_cart_add', {'id' : laitier.id }) }} class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="Viandes">
+       
+        <div class="product-heading">
+            <h3>Viandes</h3>
+        </div>
+
+       
+        <div class="product-container">
+           {% for viande in viandes %}
+            <div class="product-box">
+                <img src={{asset(viande.media[0].path)}} alt={{viande.media[0].alt}}>
+                <strong>{{viande.name}}</strong>
+                <span class="quantity">{{viande.description}}</span>
+                <span class="price">{{viande.priceHt}} €</span>
+               
+                <a href={{ path('app_cart_add', {'id' : viande.id }) }} class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="Volaille-oeuf">
+       
+        <div class="product-heading">
+            <h3>Volailles & Oeufs</h3>
+        </div>
+
+       
+        <div class="product-container">
+           {% for volaille in volailles %}
+            <div class="product-box">
+                <img src={{asset(volaille.media[0].path)}} alt={{volaille.media[0].alt}}>
+                <strong>{{volaille.name}}</strong>
+                <span class="quantity">{{volaille.description}}</span>
+                <span class="price">{{volaille.priceHt}} €</span>
+               
+                <a href={{ path('app_cart_add', {'id' : volaille.id }) }} class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="poissons">
+       
+        <div class="product-heading">
+            <h3>Poissons</h3>
+        </div>
+
+    <div class="product-container">
+           {% for poisson in poissons %}
+            <div class="product-box">
+                <img src={{asset(poisson.media[0].path)}} alt={{poisson.media[0].alt}}>
+                <strong>{{poisson.name}}</strong>
+                <span class="quantity">{{poisson.description}}</span>
+                <span class="price">{{poisson.priceHt}} €</span>
+               
+                <a href={{ path('app_cart_add', {'id' : poisson.id }) }} class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="Pains">
+       
+        <div class="product-heading">
+            <h3>Pains</h3>
+        </div>
+
+    <div class="product-container">
+           {% for pain in pains %}
+            <div class="product-box">
+                <img src={{asset(pain.media[0].path)}} alt={{pain.media[0].alt}}>
+                <strong>{{pain.name}}</strong>
+                <span class="quantity">{{pain.description}}</span>
+                <span class="price">{{pain.priceHt}} €</span>
+               
+                <a href={{ path('app_cart_add', {'id' : pain.id }) }} class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="Boissons">
+       
+        <div class="product-heading">
+            <h3>Boissons</h3>
+        </div>
+
+    <div class="product-container">
+           {% for boisson in boissons %}
+            <div class="product-box">
+                <img src={{asset(boisson.media[0].path)}} alt={{boisson.media[0].alt}}>
+                <strong>{{boisson.name}}</strong>
+                <span class="quantity">{{boisson.description}}</span>
+                <span class="price">{{boisson.priceHt}} €</span>
+               
+                <a href={{ path('app_cart_add', {'id' : boisson.id }) }} class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="clients">
+        
+        <div class="client-heading">
+            <h3>Ce que disent nos clients</h3>
+        </div>
+      
+        <div class="client-box-container">
+     
+            <div class="client-box">
+            
+                <div class="client-profile">
+                 
+                    <img src="images/client-1.jpg" alt="client">
+                
+                    <div class="profile-text">
+                        <strong>Christophe Bichou</strong>
+                        <span>Boulanger</span>
+                    </div>
+                </div>
+      
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+        
+                <p>Chouette concept pour se ravitailler de bons produits locaux sans vous ruiner. Accueil très sympathique et efficace. Que du bon, que du beau!</p>
+            </div>
+  
+            <div class="client-box">
+          
+                <div class="client-profile">
+               
+                    <img src="images/client-2.jpg" alt="client">
+               
+                    <div class="profile-text">
+                        <strong>Marc Sibou</strong>
+                        <span>Guide locale</span>
+                    </div>
+                </div>
+           
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+           
+                <p>Finalement il est possible à Paris de faire des courses locales! des produits de saison, frais, riches en saveur, vendus dans une joyeuse atmosphère de partage de valeurs, engagement et beaucoup de sourires! <br>Miam : ePicery!</p>
+            </div>
+   
+            <div class="client-box">
+      
+                <div class="client-profile">
+            
+                    <img src="images/client-3.jpg" alt="client">        
+                    <div class="profile-text">
+                        <strong>Marise Caboche</strong>
+                        <span>Chargé de projets</span>
+                    </div>
+                </div>
+           
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                
+                <p>Fruits, légumes, pains, fromage, viande... épicerie locavore online (commande obligatoire sur internet sans minimum d'achat) produits excellents meilleur rapport qualité /prix à Paris !</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="partner">
+        
+        <div class="partner-heading">
+            <h3>Nos partenaires de confiance</h3>
+        </div>
+      
+        <div class="logo-container">
+            <img src="images/logo-1.png" alt="logo">
+            <img src="images/logo-2.png" alt="logo">
+            <img src="images/logo-3.png" alt="logo">
+            <img src="images/logo-4.png" alt="logo">
+        </div>
+    </section>
+{% endblock %}

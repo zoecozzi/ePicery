@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ePicery - Mon panier
+{% endblock %}
+
+{% block body %}
+
+	<section id="product-header">
+		<div class="product-heading">
+			<h1>Mon panier</h1>
+		</div>
+		<div class="product-container">
+
+			{% for line in cart %}
+				<div class="product-box">
+					<img width="50px" src={{asset(line.product.media[0].path)}} alt={{line.product.media[0].alt}}>
+					<strong>{{ line.product.name }}</strong>
+					<span class="quantity">{{ line.product.description }}</span>
+					<span class="price">{{ line.product.priceHt }}
+						€</span>
+					<a href={{path('app_cart_remove', {'id' : line.product.id } )}} class="cart-btn">Supprimer l'article</a>
+				</div>
+
+			{% endfor %}
+		</div>
+		<div class="btn-panier">
+			<a href={{path('app_cart_delete')}} class="cart-btn-sup">Supprimer le panier</a>
+			<a href={{path('app_order')}} class="cart-btn-val">Valider le panier à {{total}}
+				€</a>
+		</div>
+	</section>
+{% endblock %}
